@@ -1,8 +1,8 @@
 
 import React from "react"
-import { v4 as uuidv4 } from 'uuid'
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { useState } from "react"
+// import { useState } from "react"
 import Header from "./components/Header"
 import FeedbackList from "./components/FeedbackList"
 import FeedbackStats from "./components/FeedbackStats"
@@ -10,6 +10,8 @@ import FeedbackForm from "./components/FeedbackForm"
 import AboutPage from "./pages/AboutPage"
 import AboutIconLink from "./components/AboutIconLink"
 import Post from "./components/Post"
+import { FeedbackProvider } from "./conext/FeedbackContext"
+
 
 //import FeedbackItem from "./components/FeedbackItem"
 import FeedbackData from "./data/FeedbackData"
@@ -17,57 +19,45 @@ import FeedbackData from "./data/FeedbackData"
 
 function App() {
 
-  const [feedback, setFeedback] = useState(FeedbackData)
-
-  const deleteFeedBack = (id) => {
-    //console.log('App', id)  
-
-    if (window.confirm('Are you sure?')) {
-      setFeedback(feedback.filter((item) => item.id !== id))
-    }
-  }
-
-  const addFeedBack = (newFeedBack) => {
-    newFeedBack.id = uuidv4()
-    //console.log(newFeedBack);
-    setFeedback([newFeedBack, ...feedback])
-  }
-
+  /* We do not use this state anymore, because we move it to Context 
+  and the components have access to him
+  const [feedback, setFeedback] = useState(FeedbackData) */
 
 
   return (
-    <Router>
-      <Header />
-      <div className="container">
-        <Routes>
-          <Route 
-            exact path="/" 
-            element={
-              <>
-                <FeedbackForm handleAdd={addFeedBack} />
-                <FeedbackStats feedback={feedback} />
-                <FeedbackList feedback={feedback}
-                  handleDelete={deleteFeedBack} />
-                <AboutIconLink />
-              </>
-            }>
-          </Route>
+    <FeedbackProvider>
+      <Router>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route
+              exact path="/"
+              element={
+                <>
+                  <FeedbackForm  />
+                  <FeedbackStats />
+                  <FeedbackList  />
+                  <AboutIconLink />
+                </>
+              }>
+            </Route>
 
-          <Route path="/about" 
-            element={
-              <>
-              <AboutPage/>
-              </>
-            }>
-          </Route> 
+            <Route path="/about"
+              element={
+                <>
+                  <AboutPage />
+                </>
+              }>
+            </Route>
 
-          <Route path="/post/*" element={<Post />} />
-          
+            <Route path="/post/*" element={<Post />} />
 
-        </Routes>
-      </div>
-      
-    </Router>
+
+          </Routes>
+        </div>
+
+      </Router>
+    </FeedbackProvider>
   )
 }
 

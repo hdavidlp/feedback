@@ -1,7 +1,11 @@
 import React from 'react'
-import ProtoTypes from "prop-types"
+//import ProtoTypes from "prop-types"
+import { useContext } from 'react'
+import FeedbackContext from '../conext/FeedbackContext'
 
-function FeedbackStats({feedback}) {
+function FeedbackStats() {
+
+    const {feedback} = useContext(FeedbackContext)
 
     // Calculate rating AVG
 
@@ -21,8 +25,11 @@ function FeedbackStats({feedback}) {
     )
 }
 
+
+/*
 FeedbackStats.prototype = {
     feedback : ProtoTypes.array.isRequired
 }
+*/
 
 export default FeedbackStats
