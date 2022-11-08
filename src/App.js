@@ -14,7 +14,7 @@ import { FeedbackProvider } from "./conext/FeedbackContext"
 
 
 //import FeedbackItem from "./components/FeedbackItem"
-import FeedbackData from "./data/FeedbackData"
+//import FeedbackData from "./data/FeedbackData"
 
 
 function App() {

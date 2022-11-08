@@ -15,9 +15,9 @@ function FeedbackItem({item}) {
 
     const {deleteFeedback, editFeedback} = useContext(FeedbackContext)
 
-    const handleClick=(id)=>{
-        console.log(id)
-    }
+    // const handleClick=(id)=>{
+    //     console.log(id)
+    // }
 
     return (
         <Card reverse={false} >

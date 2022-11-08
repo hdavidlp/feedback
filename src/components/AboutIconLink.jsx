@@ -16,7 +16,7 @@ function AboutIconLink() {
 export default AboutIconLink
 
 
-{
+
   /********************************************************
   Notes:
   
@@ -31,4 +31,3 @@ export default AboutIconLink
     }}>
     <FaQuestion size={30} />
   </Link> */
-}
