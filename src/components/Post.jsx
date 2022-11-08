@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navigate, useNavigate,Routes, Route} from "react-router-dom"
+import {Navigate, useNavigate, Routes, Route} from "react-router-dom"
 
 function Post() {
   const status = 200
